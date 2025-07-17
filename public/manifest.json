@@ -1,0 +1,61 @@
+{
+  "manifest_version": 3,
+  "name": "FavouriteEdge",
+  "version": "1.6.20",
+  "description": "一个功能强大的Edge浏览器书签管理扩展",
+  "permissions": [
+    "bookmarks",
+    "storage",
+    "tabs",
+    "activeTab"
+  ],
+  "host_permissions": [
+    "http://*/*",
+    "https://*/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "chrome_url_overrides": {
+    "newtab": "newtab.html"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "FavouriteEdge",
+    "default_icon": {
+      "16": "images/icon-16.png",
+      "32": "images/icon-32.png",
+      "48": "images/icon-48.png",
+      "128": "images/icon-128.png"
+    }
+  },
+  "icons": {
+    "16": "images/icon-16.png",
+    "32": "images/icon-32.png",
+    "48": "images/icon-48.png",
+    "128": "images/icon-128.png"
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'; img-src 'self' data: https: http:; style-src 'self' 'unsafe-inline';"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "images/*",
+        "newtab.html",
+        "newtab.css",
+        "newtab.js"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
+    }
+  ],
+  "minimum_chrome_version": "88",
+  "author": "FavouriteEdge Team",
+  "homepage_url": "https://github.com/FavouriteEdge/FavouriteEdge",
+  "short_name": "FavouriteEdge",
+  "offline_enabled": true,
+  "incognito": "split",
+  "options_page": "newtab.html"
+}

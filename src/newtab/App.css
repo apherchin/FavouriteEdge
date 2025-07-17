@@ -1,0 +1,162 @@
+.app {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 默认背景 - 只在没有动态背景时生效 */
+.app:not(.background-loaded) {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.app-header {
+  height: var(--header-height);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  padding: 0 var(--spacing-lg);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+}
+
+.header-content {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  align-items: center;
+  gap: var(--spacing-lg);
+}
+
+.logo-section {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  justify-self: start;
+}
+
+.app-title {
+  color: var(--text-white);
+  font-size: var(--font-size-2xl);
+  font-weight: 700;
+  margin: 0;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.app-subtitle {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: var(--font-size-sm);
+  font-weight: 400;
+}
+
+.header-center {
+  justify-self: center;
+  width: 100%;
+  max-width: 600px;
+}
+
+.header-spacer {
+  justify-self: end;
+}
+
+
+
+.app-body {
+  flex: 1;
+  display: flex;
+  height: calc(100vh - var(--header-height));
+}
+
+.main-content {
+  flex: 1;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.error-banner {
+  background: var(--error-color);
+  color: var(--text-white);
+  padding: var(--spacing-md);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: var(--spacing-md);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  animation: slideDown 0.3s ease-out;
+}
+
+.error-close {
+  background: none;
+  border: none;
+  color: var(--text-white);
+  cursor: pointer;
+  padding: var(--spacing-xs);
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--transition-fast);
+}
+
+.error-close:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 响应式设计 */
+@media (max-width: 1200px) {
+  .header-content {
+    grid-template-columns: 1fr 1.5fr 0.5fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .app-header {
+    padding: 0 var(--spacing-md);
+  }
+  
+  .header-content {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+    text-align: center;
+  }
+  
+  .logo-section {
+    justify-self: center;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .header-center {
+    justify-self: center;
+  }
+  
+  .header-spacer {
+    display: none;
+  }
+  
+  .app-title {
+    font-size: var(--font-size-xl);
+  }
+
+  
+  .app-body {
+    flex-direction: column;
+  }
+} 

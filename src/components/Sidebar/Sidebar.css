@@ -1,0 +1,274 @@
+.sidebar {
+  width: var(--sidebar-width);
+  height: 100%;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-right: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-sm);
+}
+
+/* 搜索栏区域 */
+.sidebar-search {
+  padding: var(--spacing-md);
+  border-bottom: 1px solid var(--border-color);
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.sidebar-nav {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+
+.sidebar-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md) var(--spacing-lg);
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  color: var(--text-secondary);
+  font-size: var(--font-size-sm);
+  position: relative;
+}
+
+.sidebar-item:hover {
+  background: rgba(0, 120, 212, 0.05);
+  color: var(--text-primary);
+}
+
+.sidebar-item.active {
+  background: var(--primary-light);
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+.sidebar-item.active::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--primary-color);
+}
+
+.sidebar-icon {
+  font-size: var(--font-size-lg);
+  width: 24px;
+  text-align: center;
+}
+
+.sidebar-label {
+  flex: 1;
+}
+
+.sidebar-count {
+  background: var(--bg-tertiary);
+  color: var(--text-muted);
+  padding: 2px 6px;
+  border-radius: 10px;
+  font-size: var(--font-size-xs);
+  min-width: 30px;
+  text-align: center;
+  font-weight: 500;
+}
+
+.sidebar-item.active .sidebar-count {
+  background: rgba(0, 120, 212, 0.2);
+  color: var(--primary-color);
+}
+
+.sidebar-footer {
+  padding: var(--spacing-md);
+  border-top: 1px solid var(--border-color);
+  background: rgba(255, 255, 255, 0.5);
+}
+
+/* 统计数据样式 */
+.sidebar-stats {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+  margin-bottom: var(--spacing-md);
+}
+
+.stat-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  background: rgba(0, 120, 212, 0.05);
+  border-radius: var(--radius-sm);
+}
+
+.stat-label {
+  font-size: var(--font-size-xs);
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.stat-value {
+  font-size: var(--font-size-xs);
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.sidebar-info {
+  text-align: center;
+}
+
+/* 文件夹相关样式 */
+.folders-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-md) var(--spacing-lg);
+  margin-bottom: var(--spacing-sm);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.folders-title {
+  font-size: var(--font-size-sm);
+  color: var(--text-muted);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.btn-add-folder {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 2px;
+  border-radius: 4px;
+  font-size: 12px;
+  transition: all var(--transition-fast);
+}
+
+.btn-add-folder:hover {
+  background: var(--bg-tertiary);
+  color: var(--primary-color);
+  transform: scale(1.1);
+}
+
+.folder-item-container {
+  position: relative;
+}
+
+.folder-item {
+  padding-left: calc(var(--spacing-lg) + 8px);
+}
+
+.folder-context-menu {
+  position: absolute;
+  top: 0;
+  right: var(--spacing-sm);
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  z-index: 1000;
+  min-width: 120px;
+  overflow: hidden;
+}
+
+.context-menu-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  width: 100%;
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  font-size: var(--font-size-sm);
+  color: var(--text-primary);
+  transition: background-color var(--transition-fast);
+}
+
+.context-menu-item:hover {
+  background: var(--bg-secondary);
+}
+
+.context-menu-item.delete {
+  color: var(--error-color);
+}
+
+.context-menu-item.delete:hover {
+  background: rgba(209, 52, 56, 0.1);
+}
+
+/* 拖拽相关样式 */
+.folder-drop-target {
+  position: relative;
+}
+
+.folder-drop-target.drag-over {
+  background: rgba(0, 120, 212, 0.1);
+  border-radius: var(--radius-md);
+}
+
+.folder-item.drag-highlight {
+  background: rgba(0, 120, 212, 0.15) !important;
+  transform: scale(1.02);
+  box-shadow: 0 2px 8px rgba(0, 120, 212, 0.3);
+}
+
+.folder-item.drag-highlight .sidebar-icon {
+  transform: scale(1.1);
+}
+
+/* 文件夹拖拽状态 */
+.folder-item-container.dragging {
+  opacity: 0.5;
+}
+
+.folder-item-container.drag-over {
+  background: rgba(0, 120, 212, 0.1);
+  border-radius: var(--radius-md);
+}
+
+/* 文件夹容器 - 可滚动，扩大显示区域 */
+.folders-container {
+  flex: 1;
+  overflow-y: auto;
+  min-height: 0;
+  padding: 0;
+  margin: 0;
+}
+
+.folders-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.folders-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.folders-container::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+}
+
+.folders-container::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+/* 系统菜单项容器 - 移到底部 */
+.system-menu-items {
+  margin-top: auto;
+  padding: var(--spacing-md) 0;
+  border-top: 1px solid var(--border-color);
+  background: rgba(255, 255, 255, 0.8);
+} 
